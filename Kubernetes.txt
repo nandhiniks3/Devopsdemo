@@ -1,0 +1,22 @@
+docker run -d -p 8080:80 nginx:latest 
+docker ps
+cat index.html
+docker cp index.html containerid:/usr/share/nginx/html/
+docker commit containerid cad/web:version1
+docker images
+docker tag cad/web:version1 us.gcr.io/tar     /cad-site:version1
+docker push us.gcr.io/tar     /cad-site:version1
+gcloud credentials
+kubectl create deployment web-server --image=us.gcr.io/tar     /cad-site:version1
+kubectl expose deployment web-server --type LoadBalancer --port 80 --target-port 80
+kubectl get pods
+kubectl get service web-server
+
+
+
+
+
+MULTI PAGE WEBSITE HOSTING IN KUBERNETES
+
+
+https://github.com/learning-zone/website-templates
